@@ -1,7 +1,7 @@
 package interfaces;
 
 import bd.core.MeuResultSet;
-import bd.daos.Vendas;
+import bd.daos.Designers;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
 
-public class VendasUI extends javax.swing.JDialog 
+public class DesignersUI extends javax.swing.JDialog 
 {
     Object[][] matrizVendas = null;
     int indice = 0;
@@ -17,7 +17,7 @@ public class VendasUI extends javax.swing.JDialog
     boolean terminou = false;
     boolean comecou = false;
     
-    public VendasUI(java.awt.Frame parent, boolean modal) 
+    public DesignersUI(java.awt.Frame parent, boolean modal) 
     {
         super(parent, modal);
         initComponents();
@@ -57,6 +57,9 @@ public class VendasUI extends javax.swing.JDialog
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -210,10 +213,13 @@ public class VendasUI extends javax.swing.JDialog
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 250, 110));
 
         jTabbedPane1.addTab(" Consultar  ", new javax.swing.ImageIcon(getClass().getResource("/imagens/zoom.png")), jPanel2); // NOI18N
+        jTabbedPane1.addTab("tab2", jPanel1);
+        jTabbedPane1.addTab("tab3", jPanel3);
+        jTabbedPane1.addTab("tab4", jPanel4);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 610, 370));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundoVendas.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 440));
 
         pack();
@@ -224,10 +230,10 @@ public class VendasUI extends javax.swing.JDialog
         boolean ePrimeiraVez = true;
         try
         {
-            if (Vendas.existeVenda(Integer.parseInt(jTextField1.getText())))
+            if (Designers.existeVenda(Integer.parseInt(jTextField1.getText())))
             {                
-                MeuResultSet result = Vendas.getVendasPorCliente(Integer.parseInt(jTextField1.getText()));
-                int qtasVendas = Vendas.qtasVendasPorCliente(Integer.parseInt(jTextField1.getText()));
+                MeuResultSet result = Designers.getVendasPorCliente(Integer.parseInt(jTextField1.getText()));
+                int qtasVendas = Designers.qtasVendasPorCliente(Integer.parseInt(jTextField1.getText()));
                 
                 matrizVendas = new Object[qtasVendas][13];
                 int i = 0;             
@@ -392,7 +398,7 @@ public class VendasUI extends javax.swing.JDialog
         {
             public void run() 
             {
-                VendasUI dialog = new VendasUI(new javax.swing.JFrame(), true);
+                DesignersUI dialog = new DesignersUI(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() 
                 {
                     @Override
@@ -421,7 +427,10 @@ public class VendasUI extends javax.swing.JDialog
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;

@@ -1,7 +1,5 @@
 package bd.dbos;
 
-import bd.daos.Clientes;
-import bd.daos.Produtos;
 
 /**
 A classe Venda armazena os dados necessários de uma venda.
@@ -10,7 +8,7 @@ Métodos dessa classe (SETTERs e GETTERs) permitem verificar e atualizar os dado
 @author Rodrigo Smith Rodrigues.
 @since 2019.
 */
-public class Venda implements Cloneable
+public class Designer implements Cloneable
 {
     private int    codigo;
     private int    codCliente;
@@ -50,10 +48,7 @@ public class Venda implements Cloneable
         if (codCliente <= 0)
             throw new Exception ("Codigo de cliente inválido");
         
-        Clientes cli = new Clientes ();
-        
-        if (!cli.cadastrado(codCliente))
-            throw new Exception ("Cliente não existente");
+       
 
         this.codCliente = codCliente;
     }   
@@ -68,10 +63,7 @@ public class Venda implements Cloneable
         if (codProduto <= 0)           
             throw new Exception ("Código inválido");
         
-        Produtos prod = new Produtos ();
-        
-        if (!prod.cadastrado(codProduto))
-            throw new Exception ("Produto não existente");
+     
 
         this.codProduto = codProduto;
     }   
@@ -350,7 +342,7 @@ public class Venda implements Cloneable
     Esse construtor não seta nenhum valor na instância, afim de ser setato posteriormente,
     por um método de uma classe do tipo DAO.
     */
-    public Venda ()
+    public Designer ()
     {}
 
     /**
@@ -370,7 +362,7 @@ public class Venda implements Cloneable
     @param pagamento String que representa o método de pagamento escolhido pelo cliente.
     @throws Exception É lançada exceção se algum dos parâmetros forem passados de forma incorreta.
     */
-    public Venda (int codigo, int codCliente, int codProduto, int qtde, String dataVenda, String cep, String endereco, 
+    public Designer (int codigo, int codCliente, int codProduto, int qtde, String dataVenda, String cep, String endereco, 
     			  String bairro, int numero, String complemento, float total, String pagamento) throws Exception
     {
         this.setCodigo       	(codigo);
@@ -436,10 +428,10 @@ public class Venda implements Cloneable
         if (obj==null)
             return false;
 
-        if (!(obj instanceof Venda))
+        if (!(obj instanceof Designer))
             return false;
 
-        Venda ven = (Venda)obj;
+        Designer ven = (Designer)obj;
 
         if (this.codigo!=ven.codigo)
             return false;
@@ -520,7 +512,7 @@ public class Venda implements Cloneable
     @param modelo a instância da classe Venda a ser usada como modelo.
     @throws Exception se o modelo for null.
     */
-    public Venda (Venda modelo) throws Exception
+    public Designer (Designer modelo) throws Exception
     {
         this.codigo          = modelo.codigo; 
         this.codCliente      = modelo.codCliente; 
@@ -545,11 +537,11 @@ public class Venda implements Cloneable
     */
     public Object clone ()
     {
-        Venda ret=null;
+        Designer ret=null;
 
         try
         {
-            ret = new Venda (this);
+            ret = new Designer (this);
         }
         catch (Exception erro)
         {} 

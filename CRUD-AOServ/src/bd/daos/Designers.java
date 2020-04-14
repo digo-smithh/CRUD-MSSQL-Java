@@ -12,7 +12,7 @@ Métodos dessa classe permitem verificar, atualizar, inserir, deletar e selecion
 @author Rodrigo Smith Rodrigues.
 @since 2019.
 */
-public class Vendas
+public class Designers
 {
     /**
     Verifica se a venda desejado existe na tabela Vendas.
@@ -88,9 +88,9 @@ public class Vendas
     @return Retorna um objeto da classe Venda, com as informações que foram retornadas do Banco de Dados.
     @throws SQLException Se houve algum erro de conexão.
     */
-    public static Venda getVenda (int codigo) throws Exception
+    public static Designer getVenda (int codigo) throws Exception
     {
-        Venda venda = null;
+        Designer venda = null;
 
         try
         {
@@ -109,7 +109,7 @@ public class Vendas
             if (!resultado.first())
                 throw new Exception ("Venda não existente");
 
-            venda = new Venda (resultado.getInt   ("CODIGO"),
+            venda = new Designer (resultado.getInt   ("CODIGO"),
             		       resultado.getInt   ("CODCLIENTE"),
             		       resultado.getInt   ("CODPRODUTO"),
             		       resultado.getInt   ("QTDE"),
