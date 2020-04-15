@@ -1,6 +1,7 @@
 package interfaces;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class HomeUI extends javax.swing.JFrame 
 {
@@ -53,6 +54,7 @@ public class HomeUI extends javax.swing.JFrame
         jMenuBar3.setName("menuOpcoes"); // NOI18N
 
         jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user.png"))); // NOI18N
+        jMenu10.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         jMenu10.setLabel("Designers");
         jMenu10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -66,9 +68,9 @@ public class HomeUI extends javax.swing.JFrame
             }
         });
         jMenuBar3.add(jMenu10);
-        jMenu10.getAccessibleContext().setAccessibleName("Designers");
 
         jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/page_white_magnify.png"))); // NOI18N
+        jMenu9.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         jMenu9.setLabel("Contratos");
         jMenu9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -84,6 +86,7 @@ public class HomeUI extends javax.swing.JFrame
         jMenuBar3.add(jMenu9);
 
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/color_wheel.png"))); // NOI18N
+        jMenu8.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         jMenu8.setLabel("Websites");
         jMenu8.setName(""); // NOI18N
         jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,6 +104,7 @@ public class HomeUI extends javax.swing.JFrame
 
         jMenu12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/door_out.png"))); // NOI18N
         jMenu12.setText("Sair");
+        jMenu12.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         jMenu12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu12MouseClicked(evt);
@@ -161,11 +165,11 @@ public class HomeUI extends javax.swing.JFrame
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseClicked
-
+JOptionPane.showMessageDialog(null,"Ainda estamos trabalhando nessa opção. Em breve ela será liberada!"," Em breve...", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu8MouseClicked
 
     private void jMenu9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu9MouseClicked
-
+    JOptionPane.showMessageDialog(null,"Ainda estamos trabalhando nessa opção. Em breve ela será liberada!"," Em breve...", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu9MouseClicked
 
     private void jMenu10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu10MouseClicked
