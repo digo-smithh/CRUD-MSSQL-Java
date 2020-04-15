@@ -6,7 +6,7 @@ import bd.core.*;
 import bd.dbos.*;
 
 /**
-A classe Vendas acessa dados da tabela Vendas, no Banco de Dados, na linguagem SQL
+A classe Designers acessa dados da tabela Designers, no Banco de Dados, na linguagem SQL
 Não há atributos nessa classe e os métodos são todos estáticos, assim como todas as DAOs.
 Métodos dessa classe permitem verificar, atualizar, inserir, deletar e selecionar dados do/no Banco de Dados.
 @author Rodrigo Smith Rodrigues.
@@ -15,12 +15,12 @@ Métodos dessa classe permitem verificar, atualizar, inserir, deletar e selecion
 public class Designers
 {
     /**
-    Verifica se a venda desejado existe na tabela Vendas.
-    @param codigo Código da venda a ser consultada.
+    Verifica se a designer desejado existe na tabela Designers.
+    @param codigo Código do designer a ser consultada.
     @return Retorna verdadeiro se existe e falso se não existe.
     @throws SQLException Se houve algum erro de conexão.
     */
-    public static boolean existeVenda (int codigo) throws Exception
+    public static boolean existeDesigner (int codigo) throws Exception
     {
         boolean retorno = false;
 
@@ -29,7 +29,7 @@ public class Designers
             String sql;
 
             sql = "SELECT * " +
-                  "FROM VENDAS " +
+                  "FROM DESIGNERS " +
                   "WHERE CODCLIENTE = ?";
 
             BDSQLServer.COMANDO.prepareStatement (sql);
@@ -42,62 +42,28 @@ public class Designers
         }
         catch (SQLException erro)
         {
-            throw new Exception ("Erro ao procurar venda");
+            throw new Exception ("Erro ao procurar designer");
         }
 
         return retorno;
     }
-    
+
     /**
-    Verifica se o produto desejado existe na tabela Vendas.
-    @param codProduto Código do produto a ser consultado.
-    @return Retorna verdadeiro se existe e falso se não existe.
+    Seleciona um designer desejado da tabela Designers.
+    @param codigo Código do designer a ser selecionada.
+    @return Retorna um objeto da classe Designer, com as informações que foram retornadas do Banco de Dados.
     @throws SQLException Se houve algum erro de conexão.
     */
-    public static boolean existeVendaComProduto (int codProduto) throws Exception
+    public static Designer getDesigner (int codigo) throws Exception
     {
-        boolean retorno = false;
+        Designer designer = null;
 
         try
         {
             String sql;
 
             sql = "SELECT * " +
-                  "FROM VENDAS " +
-                  "WHERE CODPRODUTO = ?";
-
-            BDSQLServer.COMANDO.prepareStatement (sql);
-
-            BDSQLServer.COMANDO.setInt (1, codProduto);
-
-            MeuResultSet resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery ();
-
-            retorno = resultado.first(); 
-        }
-        catch (SQLException erro)
-        {
-            throw new Exception ("Erro ao procurar venda");
-        }
-
-        return retorno;
-    }   
-
-    /**
-    Seleciona uma venda desejada da tabela Vendas.
-    @param codigo Código da venda a ser selecionada.
-    @return Retorna um objeto da classe Venda, com as informações que foram retornadas do Banco de Dados.
-    @throws SQLException Se houve algum erro de conexão.
-    */
-    public static Designer getVenda (int codigo) throws Exception
-    {
-        Designer venda = null;
-
-        try
-        {
-            String sql;
-
-            sql = "SELECT * " +
-                  "FROM VENDAS " +
+                  "FROM DESIGNERS " +
                   "WHERE CODIGO = ?";
 
             BDSQLServer.COMANDO.prepareStatement (sql);
@@ -107,36 +73,68 @@ public class Designers
             MeuResultSet resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery ();
 
             if (!resultado.first())
-                throw new Exception ("Venda não existente");
+                throw new Exception ("Designer não existente");
 
-            venda = new Designer (resultado.getInt   ("CODIGO"),
-            		       resultado.getInt   ("CODCLIENTE"),
-            		       resultado.getInt   ("CODPRODUTO"),
-            		       resultado.getInt   ("QTDE"),
-                               resultado.getString("DATAVENDA"),
+            designer = new Designer (resultado.getInt   ("CODIGO"),
+                               resultado.getString("NOME"),
+                               resultado.getString("ESPECIALIZACAO"),
+                               resultado.getString("EMAIL"),
                                resultado.getString("CEP"),
-                               resultado.getString("ENDERECO"),
-                               resultado.getString("BAIRRO"),
-                               resultado.getInt   ("NUMERO"),
+                               resultado.getString("TELEFONE"),
                                resultado.getString("COMPLEMENTO"),
-                               resultado.getFloat ("TOTAL"),
-                               resultado.getString("PAGAMENTO"));
+                               resultado.getInt   ("NUMERO"));
         }
         catch (SQLException erro)
         {
-            throw new Exception ("Erro ao procurar venda");
+            throw new Exception ("Erro ao procurar designer");
         }
 
-        return venda;
-    }  
-    
+        return designer;
+    }
     /**
-    Seleciona todas as compras de determinado cliente.
-    @param codigo Código do cliente a ser consultado.
-    @return Retorna um objeto da classe MeuResultSet, com as informações que foram retornadas do Banco de Dados.
-    @throws SQLException Se houve algum erro de conexão.
-    */
-     public static MeuResultSet getVendasPorCliente (int codigo) throws Exception
+     * Altera uma linha da tabela
+     * @param designer o designer a ser alterado, onde o atributo "codigo" ficara intocado
+     * @throws Exception se o parametro for nulo, o codigo do designer passado como parametro não estiver cadastrado ou se ocorrer erro ao se relacionar ao banco de dados
+     */
+    public static void alterar (Designer designer) throws Exception
+    {
+        if (designer==null)
+            throw new Exception ("Designer nao fornecido");
+
+        if (!existeDesigner (designer.getCodigo()))
+            throw new Exception ("Nao cadastrado");
+
+        try
+        {
+            String sql;
+
+            sql = "UPDATE DESIGNERS SET NOME = ? , ESPECIALIZACAO = ?, EMAIL = ?, CEP = ?, TELEFONE = ?, COMPLEMENTO = ?, NUMERO = ? WHERE CODIGO = ?";
+
+            BDSQLServer.COMANDO.prepareStatement (sql);
+
+            BDSQLServer.COMANDO.setString (1, designer.getNome ());
+            BDSQLServer.COMANDO.setString (2, designer.getEspecializacao ());
+            BDSQLServer.COMANDO.setString (3, designer.getEmail ());
+            BDSQLServer.COMANDO.setString (4, designer.getCep ());
+            BDSQLServer.COMANDO.setString (5, designer.getTelefone ());
+            BDSQLServer.COMANDO.setString (6, designer.getComplemento ());
+            BDSQLServer.COMANDO.setInt    (7, designer.getNumero ());
+            BDSQLServer.COMANDO.setInt    (8, designer.getCodigo ());
+
+            BDSQLServer.COMANDO.executeUpdate ();
+            BDSQLServer.COMANDO.commit        ();
+        }
+        catch (SQLException erro)
+        {
+            throw new Exception ("Erro ao atualizar dados do designer");
+        }
+    }
+    /**
+     * Busca e retorna todos as linhas da tabela no formato "MeuResultSet"
+     * @return todas as linhas da tabela no formato "MeuResultSet"
+     * @throws Exception se ocorrer erro ao se relacionar ao banco de dados
+     */
+    public static MeuResultSet getDesigners () throws Exception
     {
         MeuResultSet resultado = null;
 
@@ -144,56 +142,49 @@ public class Designers
         {
             String sql;
 
-            sql = "SELECT * FROM VENDAS WHERE CODCLIENTE = ? ORDER BY DATAVENDA";
+            sql = "SELECT * " +
+                  "FROM DESIGNERS";
 
             BDSQLServer.COMANDO.prepareStatement (sql);
-            
-            BDSQLServer.COMANDO.setInt (1, codigo);
 
             resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery ();
         }
         catch (SQLException erro)
         {
-            throw new Exception ("Erro ao recuperar vendas");
+            throw new Exception ("Erro ao recuperar designers");
         }
 
         return resultado;
     }
-     
-     /**
-    Conta quantas vendas foram feitas a determinado cliente
-    @param codigo Código do cliente a ser consultado.
-    @return Retorna um inteiro que representa quantas compras esse cliente realizou.
-    @throws SQLException Se houve algum erro de conexão.
-    */
-    public static int qtasVendasPorCliente (int codigo) throws Exception
+    /**
+     * Exclui uma linha da tabela
+     * @param codigo o codigo referente a linha a ser excluida
+     * @throws Exception se ocorrer erro ao se relacionar ao banco de dados
+     */
+    public static void excluir (int codigo) throws Exception
     {
-        MeuResultSet resultado = null;
-        
-        int qtd = 0;
-       
+        if (!existeDesigner (codigo))
+            throw new Exception ("Designer não cadastrado");
+
         try
         {
             String sql;
-                   
-            sql = "SELECT COUNT(*) FROM VENDAS WHERE CODCLIENTE = ?";
+
+            sql = "DELETE FROM DESIGNERS " +
+                  "WHERE CODIGO=?";
 
             BDSQLServer.COMANDO.prepareStatement (sql);
-            
+
             BDSQLServer.COMANDO.setInt (1, codigo);
 
-            resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery (); 
-            
-            while (resultado.next())
-            {
-                qtd = resultado.getInt(1);
-            }
-        }
+            BDSQLServer.COMANDO.executeUpdate ();
+            BDSQLServer.COMANDO.commit        ();        }
         catch (SQLException erro)
         {
-            throw new Exception ("Erro ao contar vendas");
+            throw new Exception ("Erro ao excluir designer");
         }
-
-        return qtd;
     }
+
+    
+
 }
