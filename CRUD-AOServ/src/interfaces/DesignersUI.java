@@ -77,12 +77,14 @@ public class DesignersUI extends javax.swing.JDialog
         jFormattedTextField5 = new javax.swing.JFormattedTextField();
         jFormattedTextField6 = new javax.swing.JFormattedTextField();
         jLabel23 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(" Designers");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(new java.awt.Color(219, 219, 225));
         jPanel2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
         jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -243,6 +245,7 @@ public class DesignersUI extends javax.swing.JDialog
 
         jTabbedPane1.addTab("Consultar/ Editar / Excluir  ", new javax.swing.ImageIcon(getClass().getResource("/imagens/zoom.png")), jPanel2); // NOI18N
 
+        jPanel4.setBackground(new java.awt.Color(219, 219, 225));
         jPanel4.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -278,6 +281,7 @@ public class DesignersUI extends javax.swing.JDialog
         jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 170, 30));
 
         jTextField13.setEditable(false);
+        jTextField13.setBackground(new java.awt.Color(210, 210, 210));
         jTextField13.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
         jTextField13.setName("txtCodigo"); // NOI18N
         jPanel4.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 330, 30));
@@ -287,6 +291,7 @@ public class DesignersUI extends javax.swing.JDialog
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
         jTextField17.setEditable(false);
+        jTextField17.setBackground(new java.awt.Color(210, 210, 210));
         jTextField17.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
         jTextField17.setName("txtCodigo"); // NOI18N
         jPanel4.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 40, 30));
@@ -296,6 +301,7 @@ public class DesignersUI extends javax.swing.JDialog
         jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 260, -1, -1));
 
         jTextField18.setEditable(false);
+        jTextField18.setBackground(new java.awt.Color(210, 210, 210));
         jTextField18.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
         jTextField18.setName("txtCodigo"); // NOI18N
         jPanel4.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 130, 30));
@@ -356,8 +362,12 @@ public class DesignersUI extends javax.swing.JDialog
 
         jLabel23.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/information.png"))); // NOI18N
-        jLabel23.setText("Não é permitido códigos repetidos. Confira os usados na lista ao lado.");
+        jLabel23.setText("Não é permitido códigos repetidos.");
         jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 45, -1, -1));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/accept.png"))); // NOI18N
+        jButton4.setText(" Confirmar");
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 23, 130, 40));
 
         jTabbedPane1.addTab("Cadastrar  ", new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png")), jPanel4); // NOI18N
 
@@ -493,6 +503,7 @@ public class DesignersUI extends javax.swing.JDialog
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
