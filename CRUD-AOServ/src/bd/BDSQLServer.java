@@ -22,6 +22,7 @@ public class BDSQLServer
         }
         catch (Exception erro)
         {
+            System.err.println(erro);
             JOptionPane.showMessageDialog(null,"Problemas de conexão com o Banco de Dados!"," Erro", JOptionPane.ERROR_MESSAGE);
             System.exit(0); 
         }
