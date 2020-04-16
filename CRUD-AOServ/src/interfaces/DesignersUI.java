@@ -1,6 +1,8 @@
 package interfaces;
 
+import bd.daos.Designers;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -337,6 +339,11 @@ public class DesignersUI extends javax.swing.JDialog
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jFormattedTextField3FocusLost(evt);
+            }
+        });
         jPanel4.add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 100, 30));
 
         try {
@@ -478,6 +485,19 @@ public class DesignersUI extends javax.swing.JDialog
     private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
         
     }//GEN-LAST:event_jPanel2ComponentShown
+
+    private void jFormattedTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFormattedTextField3FocusLost
+        try
+        {
+            if (Designers.existeDesigner(Integer.parseInt(jFormattedTextField3.getText())))
+            {
+                JOptionPane.showMessageDialog(null,"Código já existente! Tente outro número."," Erro", JOptionPane.ERROR_MESSAGE);
+                jFormattedTextField3.setText("");
+            }
+        }
+        catch (Exception e)
+        {} //não dará erro
+    }//GEN-LAST:event_jFormattedTextField3FocusLost
 
     public static void main(String args[]) 
     {
