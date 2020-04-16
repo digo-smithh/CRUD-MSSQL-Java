@@ -4,10 +4,6 @@ import bd.daos.Designers;
 import bd.dbos.Designer;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JOptionPane;
 
 public class DesignersUI extends javax.swing.JDialog 
 {
@@ -51,10 +47,8 @@ public class DesignersUI extends javax.swing.JDialog
         jLabel7 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jFormattedTextField7 = new javax.swing.JFormattedTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         jButton4 = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
@@ -83,7 +77,7 @@ public class DesignersUI extends javax.swing.JDialog
         jFormattedTextField5 = new javax.swing.JFormattedTextField();
         jFormattedTextField6 = new javax.swing.JFormattedTextField();
         jLabel23 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -218,21 +212,6 @@ public class DesignersUI extends javax.swing.JDialog
         jTextField11.setPreferredSize(new java.awt.Dimension(6, 22));
         jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 110, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 250, 110));
-
         jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jFormattedTextField7.setToolTipText("Digite o código do designer");
         jFormattedTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -242,7 +221,7 @@ public class DesignersUI extends javax.swing.JDialog
         });
         jPanel2.add(jFormattedTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 130, 40));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Web Designer", "Interior Designer", "Systems Designer", "Furniture Designer", "UI Designer", "Senior Designer" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Web Designer", "Interior Designer", "Systems Designer", "Furniture Designer", "UI Designer", "Senior Designer" }));
         jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 100, 30));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/page_white_edit.png"))); // NOI18N
@@ -410,9 +389,9 @@ public class DesignersUI extends javax.swing.JDialog
         jLabel23.setText("Não é permitido códigos repetidos.");
         jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 45, -1, -1));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/accept.png"))); // NOI18N
-        jButton4.setText(" Confirmar");
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 23, 130, 40));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/accept.png"))); // NOI18N
+        jButton6.setText(" Confirmar");
+        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 23, 130, 40));
 
         jTabbedPane1.addTab("Cadastrar  ", new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png")), jPanel4); // NOI18N
 
@@ -534,8 +513,7 @@ public class DesignersUI extends javax.swing.JDialog
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
@@ -571,10 +549,8 @@ public class DesignersUI extends javax.swing.JDialog
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -605,142 +581,5 @@ public class DesignersUI extends javax.swing.JDialog
         jTextField11.setText("");
         jTextField2.setText("");
     }
-    
-    private void formatarColunasDaTabela() 
-    {
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(20);
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(20);
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(20);
-        
-        DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
-        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
-        DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
-
-        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
-        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
-        direita.setHorizontalAlignment(SwingConstants.RIGHT);
-
-        jTable1.getColumnModel().getColumn(0).setCellRenderer(direita);
-        jTable1.getColumnModel().getColumn(1).setCellRenderer(centralizado);
-        jTable1.getColumnModel().getColumn(2).setCellRenderer(centralizado);
-    }
-    
-    private static int indexOf(int[][] matriz, int element)
-    {
-        
-        int index = -1;
-        
-        if(matriz == null)
-            return index;
-        
-        for(int i=0; i < matriz.length; i++){
-            if(matriz[i][12] == element){
-                index = i;
-                break;
-            }
-        }
-                
-        return index;        
-    }
-    
-    private void contoladorDeIndice()
-    {
-        if(indice >= matrizVendas.length - 1)
-        {
-            indice = matrizVendas.length - 1;
-        }
-        
-        if(indice <= 0)
-        {
-            indice = 0;
-        }
-    }
-    
-    private float calculaIndiceEPrecoAoVoltar()
-    {      
-        boolean passou = false;
-        boolean ePrimeiraVez = true;
-        float total = 0;
-        
-        DefaultTableModel model = new DefaultTableModel();
-
-        model.addColumn("Produto");
-        model.addColumn("Qtd");
-        model.addColumn("Total");
-        
-        for (int i2 = matrizVendas.length - 1; i2 >= 0; i2--)
-        {                                                     
-            if (i2 != 0)
-            {
-                if (matrizVendas[i2][2].equals(matrizVendas[i2 - 1][2]) && matrizVendas[i2][2].equals(matrizVendas[indice][2]))
-                {
-                    if (ePrimeiraVez)
-                    {
-                        total = 0;
-                        ePrimeiraVez = false;
-                    }
-                    
-                    total += (float)matrizVendas[i2][10] + (float)matrizVendas[i2 - 1][10];                   
-                    proximoIndice = i2 - 1;     
-                    passou = true;
-                    
-                    model.addRow(new Object[]{matrizVendas[i2][0], matrizVendas[i2][1], matrizVendas[i2][10]});
-                    model.addRow(new Object[]{matrizVendas[i2 - 1][0], matrizVendas[i2 - 1][1], matrizVendas[i2 - 1][10]});                 
-                }             
-            }
-        } 
-        
-        if (!passou)
-            return -1;
-        else
-        {
-            jTable1.setModel(model);
-            formatarColunasDaTabela();  
-            return total;
-        }
-    }
-    
-    private float calculaIndiceEPrecoAoAvancar()
-    {
-        boolean passou = false;
-        boolean ePrimeiraVez = true;
-        float total = 0;
-        
-        DefaultTableModel model = new DefaultTableModel();
-
-        model.addColumn("Produto");
-        model.addColumn("Qtd");
-        model.addColumn("Total");
-        
-        for (int i2 = 0; i2 < matrizVendas.length- 1; i2++)
-        {                           
-            if (i2 != 0)
-            {
-                if (matrizVendas[i2][2].equals(matrizVendas[i2 - 1][2]) && matrizVendas[i2][2].equals(matrizVendas[indice][2]))
-                {
-                    if (ePrimeiraVez)
-                    {
-                        total = 0;
-                        ePrimeiraVez = false;
-                    }
-                    
-                    total += (float)matrizVendas[i2][10] + (float)matrizVendas[i2 - 1][10];                   
-                    proximoIndice = i2;     
-                    passou = true;
-                    
-                    model.addRow(new Object[]{matrizVendas[i2][0], matrizVendas[i2][1], matrizVendas[i2][10]});
-                    model.addRow(new Object[]{matrizVendas[i2 - 1][0], matrizVendas[i2 - 1][1], matrizVendas[i2 - 1][10]});                 
-                }             
-            }
-        } 
-        
-        if (!passou)
-           return -1;
-        else
-        {
-            jTable1.setModel(model);
-            formatarColunasDaTabela();  
-            return total;
-        }      
-    }    
+  
 }
