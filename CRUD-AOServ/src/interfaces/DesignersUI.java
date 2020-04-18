@@ -2,6 +2,7 @@ package interfaces;
 
 import bd.daos.Designers;
 import bd.dbos.Designer;
+import classes.*;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,10 @@ public class DesignersUI extends javax.swing.JDialog
         initComponents();
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(getClass().getResource("/imagens/user.png")).getImage());
+        jFormattedTextField2.setFormatterFactory(null); 
+        jFormattedTextField5.setFormatterFactory(null); 
+        jFormattedTextField8.setFormatterFactory(null); 
+        jFormattedTextField4.setFormatterFactory(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -58,7 +63,6 @@ public class DesignersUI extends javax.swing.JDialog
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -78,6 +82,7 @@ public class DesignersUI extends javax.swing.JDialog
         jFormattedTextField6 = new javax.swing.JFormattedTextField();
         jLabel23 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jFormattedTextField8 = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -284,10 +289,6 @@ public class DesignersUI extends javax.swing.JDialog
         jLabel9.setText("Telefone");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
-        jTextField14.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
-        jTextField14.setName("txtCodigo"); // NOI18N
-        jPanel4.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 130, 30));
-
         jLabel11.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         jLabel11.setText("Email");
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
@@ -297,6 +298,7 @@ public class DesignersUI extends javax.swing.JDialog
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
         jComboBox1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Web Designer", "Interior Designer", "Systems Designer", "Furniture Designer", "UI Designer", "Senior Designer" }));
         jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 170, 30));
 
         jTextField13.setEditable(false);
@@ -342,6 +344,11 @@ public class DesignersUI extends javax.swing.JDialog
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jFormattedTextField1FocusLost(evt);
+            }
+        });
         jPanel4.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 130, 30));
 
         try {
@@ -368,6 +375,16 @@ public class DesignersUI extends javax.swing.JDialog
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jFormattedTextField4FocusLost(evt);
+            }
+        });
+        jFormattedTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextField4KeyTyped(evt);
+            }
+        });
         jPanel4.add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 60, 30));
 
         try {
@@ -378,11 +395,11 @@ public class DesignersUI extends javax.swing.JDialog
         jPanel4.add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 190, 30));
 
         try {
-            jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")));
+            jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("## #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel4.add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 330, 30));
+        jPanel4.add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 130, 30));
 
         jLabel23.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/information.png"))); // NOI18N
@@ -391,7 +408,19 @@ public class DesignersUI extends javax.swing.JDialog
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/accept.png"))); // NOI18N
         jButton6.setText(" Confirmar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
         jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 23, 130, 40));
+
+        try {
+            jFormattedTextField8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel4.add(jFormattedTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 330, 30));
 
         jTabbedPane1.addTab("Cadastrar  ", new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png")), jPanel4); // NOI18N
 
@@ -450,7 +479,7 @@ public class DesignersUI extends javax.swing.JDialog
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         try{
         Object selected = jComboBox2.getSelectedItem();
-        Designer designer = new Designer(Integer.parseInt(jFormattedTextField7.getText()), jTextField5.getText(), selected.toString(), jTextField6.getText(), jTextField2.getText(), jTextField11.getText(), jTextField8.getText(), Integer.parseInt(jTextField2.getText()));
+        Designer designer = new Designer(Integer.parseInt(jFormattedTextField7.getText()), jTextField5.getText(), selected.toString(),jTextField11.getText(), jTextField2.getText(), jTextField8.getText(), Integer.parseInt(jTextField2.getText()), jTextField6.getText() );
         Designers.alterar(designer);
         limparTela();
         }catch(Exception ex){
@@ -489,6 +518,63 @@ public class DesignersUI extends javax.swing.JDialog
         {} //não dará erro
     }//GEN-LAST:event_jFormattedTextField3FocusLost
 
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        try
+        {     
+            if(!Designers.existeDesigner(Integer.parseInt(jFormattedTextField3.getText())))
+            {
+                try
+                {
+                    Designer designer = new Designer (Integer.parseInt(jFormattedTextField3.getText()),
+                                                      jFormattedTextField2.getText(),
+                                                      jComboBox1.getSelectedItem().toString(),
+                                                      jFormattedTextField8.getText(),
+                                                      jFormattedTextField6.getText(),
+                                                      jFormattedTextField1.getText(),
+                                                      Integer.parseInt(jFormattedTextField4.getText()),
+                                                      jFormattedTextField5.getText());
+
+                    Designers.incluir(designer);
+                    JOptionPane.showMessageDialog(null,"Designer adicionado com sucesso"," Info", JOptionPane.INFORMATION_MESSAGE);
+                }
+                catch(Exception e)
+                {
+                    System.err.println(e);
+                    JOptionPane.showMessageDialog(null,"Todos os campos devem estar preenchidos","Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null,"O código digitado já foi cadastrado","Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        catch(Exception e)
+        {
+            System.err.println(e);
+        } 
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jFormattedTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField4KeyTyped
+        if (!isNumeric(jFormattedTextField4.getText()))
+        {
+            jFormattedTextField4.setText("");
+        }
+    }//GEN-LAST:event_jFormattedTextField4KeyTyped
+
+    private void jFormattedTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFormattedTextField4FocusLost
+        if (!isNumeric(jFormattedTextField4.getText()))
+        {
+            jFormattedTextField4.setText("");
+        }
+    }//GEN-LAST:event_jFormattedTextField4FocusLost
+
+    private void jFormattedTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFormattedTextField1FocusLost
+        Logradouro logradouro = (Logradouro)ClienteWS.getObjeto(Logradouro.class, "http://api.postmon.com.br/v1/cep", jFormattedTextField1.getText().replace("-", ""));
+        jTextField13.setText(logradouro.getLogradouro());
+        jTextField18.setText(logradouro.getCidade());
+        jTextField17.setText(logradouro.getEstado());
+    }//GEN-LAST:event_jFormattedTextField1FocusLost
+
     public static void main(String args[]) 
     {
         java.awt.EventQueue.invokeLater(new Runnable() 
@@ -523,6 +609,7 @@ public class DesignersUI extends javax.swing.JDialog
     private javax.swing.JFormattedTextField jFormattedTextField5;
     private javax.swing.JFormattedTextField jFormattedTextField6;
     private javax.swing.JFormattedTextField jFormattedTextField7;
+    private javax.swing.JFormattedTextField jFormattedTextField8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -555,7 +642,6 @@ public class DesignersUI extends javax.swing.JDialog
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField2;
@@ -568,7 +654,14 @@ public class DesignersUI extends javax.swing.JDialog
 
     private void limparTela()
     {
+        jFormattedTextField1.setText("");
+        jFormattedTextField2.setText("");
+        jFormattedTextField3.setText("");
+        jFormattedTextField4.setText("");
+        jFormattedTextField5.setText("");
+        jFormattedTextField6.setText("");
         jFormattedTextField7.setText("");
+        jFormattedTextField8.setText("");
         jTextField5.setText("");
         jTextField2.setText("");
         jTextField9.setText("");
@@ -581,5 +674,8 @@ public class DesignersUI extends javax.swing.JDialog
         jTextField11.setText("");
         jTextField2.setText("");
     }
-  
+    
+    public static boolean isNumeric(String str) {
+         return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+     }
 }

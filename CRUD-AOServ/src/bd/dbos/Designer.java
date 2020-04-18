@@ -229,7 +229,7 @@ public class Designer implements Cloneable {
      * @throws Exception É lançada exceção se algum dos parâmetros forem
      * passados de forma incorreta.
      */
-    public Designer(int codigo, String nome, String especializacao, String email, String cep, String telefone, String complemento, int numero) throws Exception {
+    public Designer(int codigo, String nome, String especializacao, String email, String telefone, String cep, int numero, String complemento) throws Exception {
         this.setCodigo(codigo);
         this.setNome(nome);
         this.setEmail(email);

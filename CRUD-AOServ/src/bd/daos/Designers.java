@@ -30,7 +30,7 @@ public class Designers
 
             sql = "SELECT * " +
                   "FROM DESIGNERS " +
-                  "WHERE CODCLIENTE = ?";
+                  "WHERE CODIGO = ?";
 
             BDSQLServer.COMANDO.prepareStatement (sql);
 
@@ -79,10 +79,10 @@ public class Designers
                                resultado.getString("NOME"),
                                resultado.getString("ESPECIALIZACAO"),
                                resultado.getString("EMAIL"),
-                               resultado.getString("CEP"),
                                resultado.getString("TELEFONE"),
-                               resultado.getString("COMPLEMENTO"),
-                               resultado.getInt   ("NUMERO"));
+                               resultado.getString("CEP"),
+                               resultado.getInt   ("NUMERO"),
+                               resultado.getString("COMPLEMENTO"));
         }
         catch (SQLException erro)
         {
@@ -91,6 +91,47 @@ public class Designers
 
         return designer;
     }
+    
+    /**
+     * inclui uma linha na tabela
+     * @param designer o designer a ser inserido
+     * @throws Exception se o parametro for nulo ou se ocorrer erro ao se relacionar ao banco de dados
+     */
+    public static void incluir (Designer designer) throws Exception
+    {
+        if (designer==null)
+            throw new Exception ("Designer nao fornecido");
+
+        if (existeDesigner (designer.getCodigo()))
+            throw new Exception ("Ja cadastrado");
+
+        try
+        {
+            String sql;
+
+            sql = "INSERT INTO DESIGNERS VALUES(?,?,?,?,?,?,?,?)";
+
+            BDSQLServer.COMANDO.prepareStatement (sql);
+
+            BDSQLServer.COMANDO.setInt    (1, designer.getCodigo ());
+            BDSQLServer.COMANDO.setString (2, designer.getNome ());
+            BDSQLServer.COMANDO.setString (3, designer.getEspecializacao ());
+            BDSQLServer.COMANDO.setString (4, designer.getEmail ());
+            BDSQLServer.COMANDO.setString (6, designer.getTelefone ());
+            BDSQLServer.COMANDO.setString (5, designer.getCep ());
+            BDSQLServer.COMANDO.setInt    (8, designer.getNumero ());
+            BDSQLServer.COMANDO.setString (7, designer.getComplemento ());
+
+
+            BDSQLServer.COMANDO.executeUpdate ();
+            BDSQLServer.COMANDO.commit        ();
+        }
+        catch (SQLException erro)
+        {
+            throw new Exception ("Erro ao inserir designer");
+        }
+    }
+    
     /**
      * Altera uma linha da tabela
      * @param designer o designer a ser alterado, onde o atributo "codigo" ficara intocado
