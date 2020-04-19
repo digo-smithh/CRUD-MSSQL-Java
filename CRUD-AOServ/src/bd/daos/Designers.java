@@ -117,10 +117,10 @@ public class Designers
             BDSQLServer.COMANDO.setString (2, designer.getNome ());
             BDSQLServer.COMANDO.setString (3, designer.getEspecializacao ());
             BDSQLServer.COMANDO.setString (4, designer.getEmail ());
-            BDSQLServer.COMANDO.setString (6, designer.getTelefone ());
-            BDSQLServer.COMANDO.setString (5, designer.getCep ());
-            BDSQLServer.COMANDO.setInt    (8, designer.getNumero ());
-            BDSQLServer.COMANDO.setString (7, designer.getComplemento ());
+            BDSQLServer.COMANDO.setString (5, designer.getTelefone ());
+            BDSQLServer.COMANDO.setString (6, designer.getCep ());
+            BDSQLServer.COMANDO.setInt    (7, designer.getNumero ());
+            BDSQLServer.COMANDO.setString (8, designer.getComplemento ());
 
 
             BDSQLServer.COMANDO.executeUpdate ();

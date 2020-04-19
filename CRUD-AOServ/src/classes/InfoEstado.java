@@ -1,3 +1,5 @@
+package classes;
+
 public class InfoEstado implements Cloneable
 {
     private String nome;

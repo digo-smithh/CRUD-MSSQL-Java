@@ -1,6 +1,9 @@
+package classes;
+
 public class Logradouro
 {
     private String logradouro;
+    
     public  String getLogradouro ()
     {
         return this.logradouro;

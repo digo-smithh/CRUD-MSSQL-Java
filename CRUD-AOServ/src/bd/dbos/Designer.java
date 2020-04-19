@@ -57,9 +57,9 @@ public class Designer implements Cloneable {
     public void setEspecializacao(String especializacao) throws Exception {
         if (especializacao == null || especializacao.equals("")) {
             throw new Exception("Especialização não fornecida");
-        }
-
+        }else{
         this.especializacao = especializacao;
+        }
     }
 
     /**
@@ -85,9 +85,9 @@ public class Designer implements Cloneable {
     public void setTelefone(String telefone) throws Exception {
         if (telefone == null || telefone.equals("")) {
             throw new Exception("Telefone não fornecido");
-        }
-
+        }else{
         this.telefone = telefone;
+        }
     }
 
     /**
@@ -232,6 +232,7 @@ public class Designer implements Cloneable {
     public Designer(int codigo, String nome, String especializacao, String email, String telefone, String cep, int numero, String complemento) throws Exception {
         this.setCodigo(codigo);
         this.setNome(nome);
+        this.setEspecializacao(especializacao);
         this.setEmail(email);
         this.setTelefone(telefone);
         this.setCep(cep);
