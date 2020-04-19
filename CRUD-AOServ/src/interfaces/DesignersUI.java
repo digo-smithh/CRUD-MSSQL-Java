@@ -56,8 +56,8 @@ public class DesignersUI extends javax.swing.JDialog
         jComboBox2 = new javax.swing.JComboBox<String>();
         jButton4 = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        jFormattedTextField9 = new javax.swing.JFormattedTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -142,7 +142,7 @@ public class DesignersUI extends javax.swing.JDialog
         jTextField6.setMinimumSize(new java.awt.Dimension(6, 22));
         jTextField6.setName("txtCodigo"); // NOI18N
         jTextField6.setPreferredSize(new java.awt.Dimension(6, 22));
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 320, 30));
+        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 320, 30));
 
         jLabel10.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         jLabel10.setText("Nome:");
@@ -163,7 +163,7 @@ public class DesignersUI extends javax.swing.JDialog
         jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 110, 30));
 
         jLabel13.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
-        jLabel13.setText("Bairro:");
+        jLabel13.setText("Endereço:");
         jLabel13.setToolTipText("");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, -1));
 
@@ -172,7 +172,7 @@ public class DesignersUI extends javax.swing.JDialog
         jTextField9.setMinimumSize(new java.awt.Dimension(6, 22));
         jTextField9.setName("txtCodigo"); // NOI18N
         jTextField9.setPreferredSize(new java.awt.Dimension(6, 22));
-        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 110, 30));
+        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 110, 30));
 
         jTextField10.setEditable(false);
         jTextField10.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
@@ -184,7 +184,7 @@ public class DesignersUI extends javax.swing.JDialog
         jLabel14.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         jLabel14.setText("Cidade:");
         jLabel14.setToolTipText("");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         jLabel16.setText("Estado:");
@@ -196,7 +196,7 @@ public class DesignersUI extends javax.swing.JDialog
         jTextField12.setMinimumSize(new java.awt.Dimension(6, 22));
         jTextField12.setName("txtCodigo"); // NOI18N
         jTextField12.setPreferredSize(new java.awt.Dimension(6, 22));
-        jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 110, 30));
+        jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 110, 30));
 
         jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
@@ -248,10 +248,6 @@ public class DesignersUI extends javax.swing.JDialog
         jLabel24.setText("CEP:");
         jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
-        jTextField3.setEditable(false);
-        jTextField3.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 80, 30));
-
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/page_white_edit.png"))); // NOI18N
         jButton5.setText("Excluir");
         jButton5.setToolTipText("Clique para excluir o designer");
@@ -266,6 +262,14 @@ public class DesignersUI extends javax.swing.JDialog
             }
         });
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 100, 40));
+
+        try {
+            jFormattedTextField9.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField9.setToolTipText("");
+        jPanel2.add(jFormattedTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 90, 30));
 
         jTabbedPane1.addTab("Consultar/ Editar / Excluir  ", new javax.swing.ImageIcon(getClass().getResource("/imagens/zoom.png")), jPanel2); // NOI18N
 
@@ -441,12 +445,16 @@ public class DesignersUI extends javax.swing.JDialog
            int nmr = designer.getNumero();
            String nmrS = String.valueOf(nmr);
            jTextField5.setText(designer.getNome());
-           jTextField2.setText(designer.getCep());
+           jFormattedTextField9.setText(designer.getCep());
            jTextField11.setText(designer.getTelefone());
            jTextField6.setText(designer.getEmail());
            jTextField8.setText(designer.getComplemento());
            jTextField2.setText(nmrS);
            jComboBox2.setSelectedItem(designer.getEspecializacao());
+           Logradouro logradouro = (Logradouro)ClienteWS.getObjeto(Logradouro.class, "http://api.postmon.com.br/v1/cep", jFormattedTextField9.getText().replace("-", ""));
+            jTextField9.setText(logradouro.getLogradouro());
+            jTextField10.setText(logradouro.getCidade());
+            jTextField12.setText(logradouro.getEstado());
        } else{
             JOptionPane.showMessageDialog(null,"Deve ser fornecido um código válido. Ex. 23","Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -489,10 +497,16 @@ public class DesignersUI extends javax.swing.JDialog
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         try{
-        if(jFormattedTextField7.getText() != null && jFormattedTextField7.getText() != "" )
+        if(jFormattedTextField7.getText() != null && jFormattedTextField7.getText() != "")
        {
-           Designers.excluir(Integer.parseInt(jFormattedTextField7.getText()));
-           
+           int reply = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse designer?", "Confirme", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                Designers.excluir(Integer.parseInt(jFormattedTextField7.getText()));
+                limparTela();
+                JOptionPane.showMessageDialog(null, "Designer excluído com sucesso");
+            } else{
+                return;
+            }
        } else{
             JOptionPane.showMessageDialog(null,"Deve ser fornecido um código válido para excluí-lo. Ex. 23","Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -610,6 +624,7 @@ public class DesignersUI extends javax.swing.JDialog
     private javax.swing.JFormattedTextField jFormattedTextField6;
     private javax.swing.JFormattedTextField jFormattedTextField7;
     private javax.swing.JFormattedTextField jFormattedTextField8;
+    private javax.swing.JFormattedTextField jFormattedTextField9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -645,7 +660,6 @@ public class DesignersUI extends javax.swing.JDialog
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
@@ -673,6 +687,7 @@ public class DesignersUI extends javax.swing.JDialog
         jTextField6.setText("");
         jTextField11.setText("");
         jTextField2.setText("");
+        jFormattedTextField9.setText("");
     }
     
     public static boolean isNumeric(String str) {
