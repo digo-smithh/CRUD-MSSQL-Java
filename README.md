@@ -1,9 +1,7 @@
-****************Projeto desenvolvido por********************
-Rodrigo Smith Rodrigues e Eduardo de Almeida Migueis - 2020
+# app-crud-java
+# Feito em Java, por Rodrigo Smith Rodrigues e Eduardo de Almeida Migueis
 
-************************Descrição***************************
-Um aplicativo simples que permite cadastrar designers de uma 
-empresa, por meio de uma interface simples e ergonômica. Seu
-ponto forte é a pesquisa e exibição automática do endereço 
-completo, por meio do CEP inserido.
+Um aplicativo simples que permite cadastrar designers de uma empresa, 
+por meio de uma interface simples e ergonômica. Seu ponto forte é a 
+pesquisa e exibição automática do endereço completo, por meio do CEP inserido.
 
